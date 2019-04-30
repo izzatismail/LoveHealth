@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "951457539648",
+    "firebase_url": "https://lovehealthdb.firebaseio.com",
+    "project_id": "lovehealthdb",
+    "storage_bucket": "lovehealthdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951457539648:android:d9006a61d0297daa",
+        "android_client_info": {
+          "package_name": "com.example.user.lovehealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951457539648-b8mg0ppju9ih7s1huo45a2h49m7e93lm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.lovehealth",
+            "certificate_hash": "126e9d564d165ce165b0f3cdd7304ed360d9885f"
+          }
+        },
+        {
+          "client_id": "951457539648-jdrut7ovnfdugtfr3l0s5crljri0r2tt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA27EFtJOIhGXsZT_eF5Lg3XP7ZFtprMYw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951457539648-jdrut7ovnfdugtfr3l0s5crljri0r2tt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group>
+        <item
+            android:id="@+id/nav_records"
+            android:icon="@drawable/ic_record"
+            android:title="Your Records" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/graph"
+            android:title="History" />
+        <item
+            android:id="@+id/nav_guide"
+            android:icon="@drawable/info"
+            android:title="Guide" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+    </group>
+</menu>

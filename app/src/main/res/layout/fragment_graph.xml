@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".GraphFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@android:drawable/editbox_background_normal">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <TextView
+            android:id="@+id/GlucoseLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/graphHR"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="Glucose History"
+            android:textColor="@android:color/black"
+            android:textSize="23sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/graph" />
+
+        <TextView
+            android:id="@+id/HRLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:text="Heartrate History"
+            android:textColor="@android:color/black"
+            android:textSize="23sp"
+            android:textStyle="italic" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/graphGlucose"
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:layout_below="@+id/GlucoseLabel"
+            android:layout_alignStart="@+id/graphHR"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtGraphGlucose" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/graphHR"
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:layout_below="@+id/HRLabel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtGraph" />
+
+    </RelativeLayout>
+</FrameLayout>
