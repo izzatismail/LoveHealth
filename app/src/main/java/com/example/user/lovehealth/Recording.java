@@ -89,6 +89,11 @@ public class Recording extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recording);
 
+        if (bluetoothAdapter == null) {
+            finish();
+            return;
+        }
+
         if (!bluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, 1);
