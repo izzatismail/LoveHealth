@@ -20,7 +20,7 @@
 
     <FrameLayout
         android:id="@+id/frameRecord2"
-        android:layout_width="347dp"
+        android:layout_width="match_parent"
         android:layout_height="358dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -90,6 +90,7 @@
             android:id="@+id/btnStartConnecting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:background="@drawable/input_background2"
             android:text="Connect Smartwatch"
             android:textColor="@color/white" />
@@ -98,10 +99,10 @@
 
     <FrameLayout
         android:id="@+id/frameRecord"
-        android:layout_width="347dp"
+        android:layout_width="match_parent"
         android:layout_height="104dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@android:drawable/picture_frame"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:text="Heartrate (bpm): "
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -127,7 +128,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:text="0"
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -214,7 +215,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNotes"></Spinner>
+        app:layout_constraintTop_toBottomOf="@+id/txtNotes"/>
 
     <Spinner
         android:id="@+id/check_eaten"
@@ -224,7 +225,7 @@
         android:layout_marginTop="8dp"
         android:background="@android:drawable/editbox_background"
         app:layout_constraintStart_toEndOf="@+id/glucose_picker_dec"
-        app:layout_constraintTop_toBottomOf="@+id/txtMeasure"></Spinner>
+        app:layout_constraintTop_toBottomOf="@+id/txtMeasure"/>
 
     <Button
         android:id="@+id/btnSubmit"

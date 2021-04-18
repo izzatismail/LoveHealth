@@ -89,12 +89,7 @@ public class Recording extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recording);
 
-        if (bluetoothAdapter == null) {
-            finish();
-            return;
-        }
-
-        if (!bluetoothAdapter.isEnabled()) {
+        if (bluetoothAdapter != null && !bluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, 1);
         }
@@ -128,26 +123,60 @@ public class Recording extends AppCompatActivity{
         progressDialog.setTitle("Reading Heartrate");
         progressDialog.setCanceledOnTouchOutside(false);
 
-        btnSubmit.setVisibility(View.INVISIBLE);
-        btnCancel.setVisibility(View.INVISIBLE);
-        mGetHR.setVisibility(View.INVISIBLE);
-        txtBPM.setVisibility(View.INVISIBLE);
-        spinnerMeasure.setVisibility(View.INVISIBLE);
-        mPick2.setVisibility(View.INVISIBLE);
-        mPick.setVisibility(View.INVISIBLE);
-        mFrame.setVisibility(View.INVISIBLE);
-        mFrame2.setVisibility(View.INVISIBLE);
-        txtDot.setVisibility(View.INVISIBLE);
-        txtRecGlu.setVisibility(View.INVISIBLE);
-        txtHow.setVisibility(View.INVISIBLE);
-        txtHeartrate.setVisibility(View.INVISIBLE);
-        txtMeasured.setVisibility(View.INVISIBLE);
-        spinnerNotes.setVisibility(View.INVISIBLE);
+//        btnSubmit.setVisibility(View.INVISIBLE);
+//        btnCancel.setVisibility(View.INVISIBLE);
+//        mGetHR.setVisibility(View.INVISIBLE);
+//        txtBPM.setVisibility(View.INVISIBLE);
+//        spinnerMeasure.setVisibility(View.INVISIBLE);
+//        mPick2.setVisibility(View.INVISIBLE);
+//        mPick.setVisibility(View.INVISIBLE);
+//        mFrame.setVisibility(View.INVISIBLE);
+//        mFrame2.setVisibility(View.INVISIBLE);
+//        txtDot.setVisibility(View.INVISIBLE);
+//        txtRecGlu.setVisibility(View.INVISIBLE);
+//        txtHow.setVisibility(View.INVISIBLE);
+//        txtHeartrate.setVisibility(View.INVISIBLE);
+//        txtMeasured.setVisibility(View.INVISIBLE);
+//        spinnerNotes.setVisibility(View.INVISIBLE);
 
         mPick.setMinValue(1);
         mPick.setMaxValue(20);
         mPick2.setMinValue(0);
         mPick2.setMaxValue(9);
+
+        //ArrayAdapter to show the content of the spinner
+        ArrayAdapter<CharSequence> adapterNotes = ArrayAdapter.createFromResource(this,
+                R.array.notes, android.R.layout.simple_spinner_item);
+        adapterNotes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerNotes.setAdapter(adapterNotes);
+        spinnerNotes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                notes = spinnerNotes.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        ArrayAdapter<CharSequence> adapterMeasure = ArrayAdapter.createFromResource(this,
+                R.array.measure, android.R.layout.simple_spinner_item);
+        adapterMeasure.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMeasure.setAdapter(adapterMeasure);
+        spinnerMeasure.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                measures = spinnerMeasure.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //End for Spinners
     }
 
     void initializeEvents() {
@@ -161,7 +190,7 @@ public class Recording extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if(!connected)
-                    Toast.makeText(v.getContext(), "You are not connected to smartwatch. Please wait until State is Connected and try again",Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), "You are not connected to smartwatch. Please wait until State is Connected and try again",Toast.LENGTH_SHORT).show();
                 else
                     startScanHeartRate();
 
@@ -187,7 +216,12 @@ public class Recording extends AppCompatActivity{
 
     void startConnecting() {
 
-        if(!bluetoothAdapter.isEnabled()){
+        if (bluetoothAdapter == null) {
+            Toast.makeText(this, "Bluetooth is not turned on. Please turn it on and try again",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(bluetoothAdapter != null && !bluetoothAdapter.isEnabled()){
             AlertDialog.Builder startBT = new AlertDialog.Builder(Recording.this);
             startBT.setTitle("Bluetooth Is Not Enabled");
             startBT.setMessage("Bluetooth is currently disabled. Please Enable Bluetooth to connect with smartwatch");
@@ -226,41 +260,6 @@ public class Recording extends AppCompatActivity{
             txtHow.setVisibility(View.VISIBLE);
             txtMeasured.setVisibility(View.VISIBLE);
             spinnerNotes.setVisibility(View.VISIBLE);
-
-
-            //ArrayAdapter to show the content of the spinner
-            ArrayAdapter<CharSequence> adapterNotes = ArrayAdapter.createFromResource(this,
-                    R.array.notes, android.R.layout.simple_spinner_item);
-            adapterNotes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerNotes.setAdapter(adapterNotes);
-            spinnerNotes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    notes = spinnerNotes.getSelectedItem().toString();
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-
-            ArrayAdapter<CharSequence> adapterMeasure = ArrayAdapter.createFromResource(this,
-                    R.array.measure, android.R.layout.simple_spinner_item);
-            adapterMeasure.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerMeasure.setAdapter(adapterMeasure);
-            spinnerMeasure.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    measures = spinnerMeasure.getSelectedItem().toString();
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-            //End for Spinners
         }
     }
 
